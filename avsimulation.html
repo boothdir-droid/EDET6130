@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Classroom AV Training Module</title>
+    <style>
+        :root {
+            --bg-color: #1e1e24;
+            --panel-color: #2a2a35;
+            --extron-gray: #42424b;
+            --text-light: #f5f5f7;
+            --accent-green: #4caf50;
+            --accent-red: #f44336;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-light);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        h1, h2, h3 { margin: 0; }
+        
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 900px) {
+            .container { grid-template-columns: 1fr; }
+        }
+
+        /* Extron Panel Styling */
+        .extron-panel {
+            background-color: var(--extron-gray);
+            border: 5px solid #222;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .panel-header {
+            text-align: center;
+            font-weight: bold;
+            letter-spacing: 2px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 5px;
+            color: #ccc;
+        }
+
+        .panel-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .button-group {
+            border: 2px solid #555;
+            padding: 10px;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .group-label {
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            background-color: var(--extron-gray);
+            padding: 0 5px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .btn-matrix {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        button {
+            background-color: #e0e0e0;
+            color: #333;
+            border: 2px solid #999;
+            padding: 12px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        button:active { transform: scale(0.95); }
+        
+        button.lit {
+            background-color: #fff !important;
+            box-shadow: 0 0 12px #fff;
+            border-color: #fff;
+        }
+
+        button.lit-red {
+            background-color: var(--accent-red) !important;
+            color: white !important;
+            box-shadow: 0 0 12px var(--accent-red);
+            border-color: var(--accent-red);
+        }
+
+        /* Control Panel Tweaks */
+        .display-group .btn-matrix, .volume-group { height: 80px; display: flex; align-items: center; justify-content: center; gap:10px; }
+        .display-group button { flex: 1; height: 50px; }
+
+        /* Wiring Lab Styling */
+        .card {
+            background-color: var(--panel-color);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .cable-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #3a3a4a;
+        }
+
+        /* Diagnostics Terminal Display */
+        .terminal {
+            background-color: #000;
+            color: #00ff00;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 15px;
+            border-radius: 5px;
+            min-height: 150px;
+            white-space: pre-wrap;
+            box-shadow: inset 0 0 10px rgba(0,255,0,0.2);
+        }
+
+        /* Checkbox Switch Styling */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 22px;
+        }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider {
+            position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #ccc; transition: .4s; border-radius: 22px;
+        }
+        .slider:before {
+            position: absolute; content: ""; height: 14px; width: 14px; left: 4px; bottom: 4px;
+            background-color: white; transition: .4s; border-radius: 50%;
+        }
+        input:checked + .slider { background-color: var(--accent-green); }
+        input:checked + .slider:before { transform: translateX(22px); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h2>🏛️ Virtual AV System Sandbox</h2>
+        <p style="margin:5px 0 0 0; color:#aaa;">Interactive Faculty Interface & Live Cable Break-Fix Lab</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="extron-panel">
+            <div class="panel-header">EXTRON MLC PLUS 200</div>
+            
+            <div class="panel-grid">
+                <div class="button-group display-group">
+                    <span class="group-label">DISPLAY</span>
+                    <div class="btn-matrix" style="width: 100%;">
+                        <button id="btn-on" onclick="pressPowerOn()">ON</button>
+                        <button id="btn-off" onclick="pressPowerOff()" class="lit">OFF</button>
+                    </div>
+                </div>
+
+                <div class="button-group volume-group">
+                    <span class="group-label">VOLUME</span>
+                    <input type="range" id="vol-knob" min="0" max="100" value="50" oninput="adjustVolume(this.value)" style="width:80%;">
+                    <span id="vol-txt" style="font-size:12px; font-weight:bold; width:30px; text-align:right;">50%</span>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <span class="group-label">SOURCE SELECTION / SCREEN CONTROL</span>
+                <div class="btn-matrix">
+                    <button id="src-pc" onclick="selectSource('PC')">PC</button>
+                    <button id="src-doccam" onclick="selectSource('DOC_CAM')">DOC CAM</button>
+                    <button id="src-vga" onclick="selectSource('VGA')">VGA</button>
+                    <button id="src-hdmi" onclick="selectSource('HDMI')">HDMI</button>
+                    <button id="btn-mute" onclick="toggleMute()">MUTE</button>
+                    <div style="display:flex; flex-direction:column; gap:2px;">
+                        <button id="scr-up" onclick="nudgeScreen('UP')" style="padding:4px; font-size:10px; flex:1;">SCREEN UP</button>
+                        <button id="scr-down" onclick="nudgeScreen('DOWN')" style="padding:4px; font-size:10px; flex:1;">SCREEN DOWN</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3 style="color:#aaa; border-bottom:1px solid #444; padding-bottom:5px; margin-bottom:10px;">🔧 Rack & Room Physical Connection Sandbox</h3>
+            <p style="font-size: 12px; color: #888; margin-bottom: 15px;">Simulate infrastructure states or loose wires by turning individual physical links ON or OFF:</p>
+            
+            <div id="wiring-cabinet">
+                </div>
+            
+            <div class="cable-toggle" style="margin-top:10px; border:none;">
+                <span>💡 Manually Turn On Document Camera Hardware:</span>
+                <label class="switch">
+                    <input type="checkbox" id="hw-doccam" onchange="toggleDocCamHardware(this.checked)">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="card" style="flex:1;">
+        <h3 style="margin-bottom: 10px; font-size:14px; letter-spacing:1px; color:#aaa;">📺 LIVE DISPLAY MONITOR OUTPUTS</h3>
+        <div id="console" class="terminal">System Initializing...</div>
+    </div>
+
+    <script>
+        // 1. INITIAL SYSTEM STATE DATA MAP (Matching your exact Visio Configuration)
+        const state = {
+            cables: {
+                "IN1606_Main_Power": true,
+                "MLC_Plus_PoE_VLAN116": true,
+                "Laptop_VGA_Desk_Input": true,
+                "PC_HDMI_Input_3": true,
+                "DocCam_HDMI_Input_4": true,
+                "Aux_HDMI_Input_6": true,
+                "Local_NEC_Monitor_Output_A": true,
+                "IN1606_To_DTP_Tx_Output_B": true,
+                "Cat50_DTP_Infrastructure_Link": true,
+                "DTP_Rx_To_Projector_HDMI1": true,
+                "MLC_COM1_To_DTP_Tx_RS232": true,
+                "DTP_Rx_To_Projector_RS232C": true
+            },
+            systemPower: "OFF", // "OFF", "WARMING", "ON"
+            selectedSource: "PC",
+            isMuted: false,
+            volumeLevel: 50,
+            screenState: "UP",
+            pcPowerLeftOn: true, 
+            docCamHardwarePower: false 
+        };
+
+        // Labels for human reading in the break-fix panel layout
+        const cableLabels = {
+            "IN1606_Main_Power": "Power Conditioner Feed to Switcher",
+            "MLC_Plus_PoE_VLAN116": "MLC Plus 200 PoE Network Drop",
+            "Laptop_VGA_Desk_Input": "VGA Cable (Input 1 Path)",
+            "PC_HDMI_Input_3": "Rack PC HDMI (Input 3 Path)",
+            "DocCam_HDMI_Input_4": "Doc Cam HDMI (Input 4 Path)",
+            "Aux_HDMI_Input_6": "Aux HDMI Wallplate (Input 6 Path)",
+            "Local_NEC_Monitor_Output_A": "Monitor Cable from Output A",
+            "IN1606_To_DTP_Tx_Output_B": "HDMI Cable to DTP Transmitter",
+            "Cat50_DTP_Infrastructure_Link": "50ft DTP Shielded Twisted Pair Link",
+            "DTP_Rx_To_Projector_HDMI1": "Ceiling HDMI from DTP Rx to Projector",
+            "MLC_COM1_To_DTP_Tx_RS232": "RS-232 Control from MLC COM 1",
+            "DTP_Rx_To_Projector_RS232C": "RS-232 Control Link to Epson Screen"
+        };
+
+        // 2. INJECT SYSTEM LABELS INTO WIRING SANDBOX
+        function buildWiringCabinet() {
+            const container = document.getElementById('wiring-cabinet');
+            container.innerHTML = '';
+            for (let key in state.cables) {
+                container.innerHTML += `
+                    <div class="cable-toggle">
+                        <span style="font-size:14px;">${cableLabels[key]}</span>
+                        <label class="switch">
+                            <input type="checkbox" id="chk-${key}" ${state.cables[key] ? 'checked' : ''} onchange="toggleCable('${key}', this.checked)">
+                            <span class="slider"></span>
+                        </label>
+                    </div>`;
+            }
+        }
+
+        // 3. LOGIC HANDLERS
+        function toggleCable(key, isConnected) {
+            state.cables[key] = isConnected;
+            evaluateSignalPaths();
+        }
+
+        function toggleDocCamHardware(isOn) {
+            state.docCamHardwarePower = isOn;
+            evaluateSignalPaths();
+        }
+
+        function adjustVolume(val) {
+            state.volumeLevel = val;
+            document.getElementById('vol-txt').innerText = val + "%";
+        }
+
+        function pressPowerOn() {
+            if (!state.cables["MLC_Plus_PoE_VLAN116"]) {
+                updateConsole("[SYSTEM FAILURE] Control Panel dead. No PoE detected on network drop.");
+                return;
+            }
+            if (state.systemPower === "ON") return;
+
+            state.systemPower = "WARMING";
+            updatePanelButtons();
+            updateConsole("=== ATTEMPTING SYSTEM WARM-UP ===\nSending Relay 2 (DOWN) command to DA-LITE LVC...\nScreen lowering...");
+            state.screenState = "DOWN";
+
+            // Simulating 30-second initialization loop down to 1.5 seconds for trainee ease
+            setTimeout(() => {
+                state.systemPower = "ON";
+                state.selectedSource = "PC";
+                updatePanelButtons();
+                evaluateSignalPaths();
+            }, 1500);
+        }
+
+        function pressPowerOff() {
+            state.systemPower = "OFF";
+            state.isMuted = false;
+            state.screenState = "UP";
+            updatePanelButtons();
+            updateConsole("=== SHUTTING DOWN SYSTEM ===\nSending Relay 1 (UP) command to DA-LITE LVC...\nScreen retracting.\nSystem is Powered Down.");
+        }
+
+        function selectSource(src) {
+            if (state.systemPower !== "ON") return;
+            state.selectedSource = src;
+            updatePanelButtons();
+            evaluateSignalPaths();
+        }
+
+        function toggleMute() {
+            if (state.systemPower !== "ON") return;
+            state.isMuted = !state.isMuted;
+            updatePanelButtons();
+            evaluateSignalPaths();
+        }
+
+        function nudgeScreen(direction) {
+            state.screenState = direction;
+            updateConsole(`[Manual Override] Screen forced manually ${direction} via direct controller relays.`);
+        }
+
+        // 4. REFLECT BUTTON LED VISUAL CHANGES
+        function updatePanelButtons() {
+            // Power LEDs
+            document.getElementById('btn-on').className = (state.systemPower === "ON") ? "lit" : "";
+            document.getElementById('btn-on').style.background = (state.systemPower === "WARMING") ? "#ffeb3b" : ""; // Flash yellow when warming
+            document.getElementById('btn-off').className = (state.systemPower === "OFF") ? "lit" : "";
+
+            // Source LEDs
+            const sources = ['PC', 'DOC_CAM', 'VGA', 'HDMI'];
+            sources.forEach(src => {
+                const btn = document.getElementById(`src-${src.toLowerCase().replace('_','')}`);
+                if (state.systemPower === "ON" && state.selectedSource === src) {
+                    btn.className = "lit";
+                } else {
+                    btn.className = "";
+                }
+            });
+
+            // Mute LED
+            document.getElementById('btn-mute').className = (state.systemPower === "ON" && state.isMuted) ? "lit-red" : "";
+        }
+
+        // 5. THE CORE ENGINE EVALUATION (Calculates what the room outputs dynamically)
+        function evaluateSignalPaths() {
+            if (state.systemPower === "OFF") return;
+            if (state.systemPower === "WARMING") return;
+
+            let logOutput = "=== LIVE ROOM SIGNAL ROUTING DIAGNOSTICS ===\n";
+
+            // Infrastructure check
+            if (!state.cables["IN1606_Main_Power"]) {
+                logOutput += "\n[CRITICAL ERROR] Extron IN1606 Matrix Switcher back panel power completely dark.\n* LOCAL MONITOR: No Signal\n* WALL PROJECTOR: No Signal";
+                updateConsole(logOutput);
+                return;
+            }
+
+            // Track active feed status maps
+            const sourceMap = {
+                "VGA": { label: "INPUT 1: Laptop VGA", working: state.cables["Laptop_VGA_Desk_Input"] },
+                "PC": { label: "INPUT 3: Installed Room PC", working: state.cables["PC_HDMI_Input_3"] && state.pcPowerLeftOn },
+                "DOC_CAM": { label: "INPUT 4: ELMO Document Camera", working: state.cables["DocCam_HDMI_Input_4"] && state.docCamHardwarePower },
+                "HDMI": { label: "INPUT 6: Aux Desk HDMI Plate", working: state.cables["Aux_HDMI_Input_6"] }
+            };
+
+            const currentFeed = sourceMap[state.selectedSource];
+
+            // Evaluate Matrix Output A (NEC Monitor)
+            logOutput += `Active Matrix Route Input Selected: [ ${currentFeed.label} ]\n\n`;
+            
+            if (currentFeed.working) {
+                if (state.cables["Local_NEC_Monitor_Output_A"]) {
+                    logOutput += `[*] LOCAL MONITOR DISPLAY: Successfully displaying continuous stream from ${state.selectedSource}.\n`;
+                } else {
+                    logOutput += `[*] LOCAL MONITOR DISPLAY: No Signal. (Broken or unplugged display cable running from Matrix Output A to back of NEC Monitor).\n`;
+                }
+            } else {
+                logOutput += `[*] LOCAL MONITOR DISPLAY: No Signal. (The source device itself is turned off or its input patch cable is missing).\n`;
+            }
+
+            // Evaluate Matrix Output B (Epson Projection Path via Twisted Pair Extenders)
+            logOutput += "\n------------------------------------------------\n";
+            
+            if (state.isMuted) {
+                logOutput += `[*] WALL PROJECTOR SCREEN: [ VIDEO MUTED / BLANKED ] (Video blanking active on Extron Controller. Red LED engaged.)\n`;
+            } else if (!currentFeed.working) {
+                logOutput += `[*] WALL PROJECTOR SCREEN: No Signal. (Missing an active source stream on the switcher input side).\n`;
+            } else {
+                // Step-by-step downstream signal trace
+                if (!state.cables["IN1606_To_DTP_Tx_Output_B"]) {
+                    logOutput += `[*] WALL PROJECTOR SCREEN: No Signal. (Matrix Output B patch cable disconnected from Input of DTP 230 Tx module).\n`;
+                } else if (!state.cables["Cat50_DTP_Infrastructure_Link"]) {
+                    logOutput += `[*] WALL PROJECTOR SCREEN: No Signal. (Link Loss: Shielded Twisted Pair link broken between Transmitter rack and Ceiling Receiver).\n`;
+                } else if (!state.cables["DTP_Rx_To_Projector_HDMI1"]) {
+                    logOutput += `[*] WALL PROJECTOR SCREEN: No Signal. (HDMI Output run broken from ceiling DTP Rx into Epson HDMI 1 port).\n`;
+                } else {
+                    // Check physical RS232 driver injection loop automation paths
+                    const controlWorking = state.cables["MLC_COM1_To_DTP_Tx_RS232"] && state.cables["DTP_Rx_To_Projector_RS232C"];
+                    if (controlWorking) {
+                        logOutput += `[*] WALL PROJECTOR SCREEN: Projecting crystal-clear digital output from ${state.selectedSource} at WUXGA Native Resolution.\n`;
+                    } else {
+                        logOutput += `[*] WALL PROJECTOR SCREEN: System Control Hang. (Cables are present but projector missed driver automation hook up because RS-232 link is broken).\n`;
+                    }
+                }
+            }
+
+            updateConsole(logOutput);
+        }
+
+        function updateConsole(text) {
+            document.getElementById('console').innerText = text;
+        }
+
+        // Initialize display configuration on window load
+        buildWiringCabinet();
+        pressPowerOff();
+    </script>
+</body>
+</html>
