@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Ally - Instructor Report</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="icon" href="https://prod.ally.ac/favicon.ico">
+    
+    <style>
+        /* --- INTEGRATED RECOVERY STYLES --- */
+        body {
+            background-color: #FFF;
+            color: #333;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: normal;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            margin: 0;
+        }
+
+        a, a:hover, a:focus, a:visited {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .sr-only {
+            border: 0;
+            clip: rect(0, 0, 0, 0);
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            padding: 0;
+            position: absolute;
+            width: 1px;
+        }
+
+        /* --- CONTAINER & TABS LAYOUT --- */
+        .ir-course-header {
+            background-color: #3E4043;
+            color: #FFF;
+            display: flex;
+            flex-direction: column;
+            padding: 35px;
+        }
+
+        .ir-course-header > .ir-course-header-meter-title {
+            align-items: flex-end;
+            display: flex;
+            order: 2;
+        }
+
+        .ir-course-header h1 {
+            font-size: 32px;
+            font-weight: 500;
+            line-height: 1;
+        }
+
+        .ir-course-header h2 {
+            font-family: "Roboto", "Fira Sans", "Segoe UI", sans-serif;
+            font-size: 18px;
+            font-weight: 300;
+            letter-spacing: 0.2px;
+            margin-bottom: 25px;
+            order: 1;
+            line-height: 1;
+        }
+
+        .ir-course-header feedback-score-meter {
+            margin-right: 25px;
+            max-width: 150px;
+        }
+
+        #ir-course-tabs {
+            background-color: #3E4043;
+            padding: 10px 60px 0 60px;
+        }
+
+        .tabset-tabs {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #ir-course-tabs .tabset-tab {
+            display: inline-block;
+            margin-right: 45px;
+        }
+
+        #ir-course-tabs .tabset-tab button {
+            background: none;
+            border: none;
+            color: #DDD;
+            cursor: pointer;
+            display: inline-block;
+            font-size: 17px;
+            font-weight: 500;
+            padding: 8px 0;
+        }
+
+        #ir-course-tabs .tabset-tab button:hover {
+            border-bottom: solid 7px #ccc;
+            color: #FFF;
+        }
+
+        #ir-course-tabs .tabset-tab.active button,
+        #ir-course-tabs .tabset-tab button:active,
+        #ir-course-tabs .tabset-tab button:focus {
+            border-bottom: solid 7px #FFF;
+            color: #FFF;
+        }
+
+        /* --- ACCESSIBILITY SCORE METER --- */
+        .feedback-score-meter {
+            letter-spacing: 0.03em;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .feedback-score-meter-level-perfect .feedback-score-meter-chart g.highcharts-series > path[fill="none"] {
+            fill: #60B700;
+        }
+
+        .feedback-score-meter-percent {
+            bottom: 0;
+            display: block;
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-weight: 300;
+            left: 0;
+            line-height: .9;
+            position: absolute;
+            right: 0;
+            text-align: center;
+        }
+
+        /* --- DATA BREAKDOWN AND LEGENDFIELD --- */
+        #ir-course-overview-breakdown {
+            background-color: #EAECEC;
+            display: flex;
+            justify-content: center;
+            padding: 30px 0;
+        }
+
+        #ir-course-overview-content-breakdown {
+            margin-right: 30px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        #ir-course-overview-content-breakdown-chart-container {
+            align-items: center;
+            background-color: #F4F5F5;
+            display: flex;
+            justify-content: center;
+            padding: 10px 30px;
+        }
+
+        #ir-course-overview-content-breakdown-legend-container {
+            align-items: flex-start;
+            background-color: #FFFFFF;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            padding: 30px 40px;
+        }
+
+        #ir-course-overview-content-breakdown-legend-container h3 {
+            font-size: 20px;
+            font-weight: normal;
+            margin: 0;
+            color: #333;
+        }
+
+        #ir-course-overview-content-breakdown-legend-container table {
+            margin: 30px 0 20px;
+        }
+
+        #ir-course-overview-content-breakdown-legend-container table td {
+            border-bottom: 1px solid #EAECEC;
+            padding: 2px 50px 2px 0px;
+            font-size: 0.9em;
+        }
+
+        #ir-course-overview-content-breakdown-legend-container table tr:last-child td {
+            border-bottom: 0;
+        }
+
+        #ir-course-overview-content-breakdown-legend-container table td div {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        #ir-course-overview-content-breakdown-legend-container table td span.ir-course-overview-content-breakdown-colorbox {
+            border-radius: 3px;
+            display: inline-block;
+            height: 15px;
+            margin-right: 10px;
+            min-width: 15px;
+        }
+
+        #ir-course-overview-content-breakdown-legend-container table td:last-child {
+            font-size: 0.8em;
+            padding-right: 100px;
+        }
+
+        /* --- CONGRATULATIONS PANEL --- */
+        #ir-course-files {
+            margin: 32px;
+        }
+
+        ir-congratulations {
+            display: flex;
+            width: 100%;
+        }
+
+        ir-congratulations .ir-congratulations-illustration {
+            background-color: #222;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: flex-end;
+            line-height: 0;
+        }
+
+        ir-congratulations .ir-congratulations-illustration img {
+            width: 100%;
+        }
+
+        ir-congratulations .ir-congratulations-content {
+            align-items: baseline;
+            background-color: #000;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            color: #FFF;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 2;
+            justify-content: center;
+            padding: 60px 5%;
+        }
+
+        ir-congratulations .ir-congratulations-content h4 {
+            font-size: 1.75em;
+            font-weight: 400;
+        }
+
+        a.btn {
+            background: rgb(70,70,70);
+            background: linear-gradient(180deg, rgba(70,70,70,1) 0%, rgba(34,34,34,1) 100%);
+            border: 1px solid transparent;
+            border-radius: 5px;
+            color: #FFF;
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+        }
+
+        a.btn:focus, a.btn:hover {
+            background: #FFF;
+            border: 1px solid #222;
+            border-radius: 5px;
+            color: #222;
+        }
+
+        /* --- MEDIA RESPONSIVENESS PATCH --- */
+        @media (max-width: 991px) {
+            #ir-course-overview-breakdown {
+                align-items: stretch;
+                flex-direction: column;
+                padding: 30px 0;
+            }
+            #ir-course-overview-content-breakdown {
+                flex-direction: column;
+                margin-right: 0;
+            }
+            #ir-course-overview-breakdown > * {
+                margin: 0 30px;
+            }
+        }
+        @media (max-width: 767px) {
+            #ir-course-overview-content-breakdown-legend-container table {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <app-root ng-version="12.2.17">
+        <div dir="ltr">
+            <ir-course-header>
+                <div class="ir-course-header">
+                    <div class="ir-course-header-meter-title">
+                        <feedback-score-meter backgroundcolor="#000">
+                            <div class="feedback-score-meter feedback-score-meter-level-perfect" style="height: 75px; width: 150px;">
+                                <div aria-hidden="true" class="feedback-score-meter-chart" style="overflow: hidden;">
+                                    <div id="highcharts-gvjhff8-7" dir="ltr" class="highcharts-container" style="position: relative; overflow: hidden; width: 150px; height: 150px; text-align: left; line-height: normal; z-index: 0; user-select: none; touch-action: manipulation; outline: none;">
+                                        <svg version="1.1" class="highcharts-root" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12px;" xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150" role="img">
+                                            <desc>Created with Highcharts 10.2.1</desc>
+                                            <rect fill="transparent" class="highcharts-background" x="0" y="0" width="150" height="150" rx="0" ry="0"></rect>
+                                            <g class="highcharts-series-group" data-z-index="3">
+                                                <g class="highcharts-series highcharts-series-0 highcharts-pie-series" data-z-index="0.1" opacity="1">
+                                                    <!-- Green Donut Section (100%) -->
+                                                    <path fill="#60B700" d="M 0.000006222416075729598 75.0305509799206 A 75 75 0 0 1 149.9999625000031 74.92500001249999 L 123.74997562500204 74.951250008125 A 48.75 48.75 0 0 0 26.250004044570453 75.0198581369484 Z" stroke-linejoin="round"></path>
+                                                </g>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="feedback-score-meter-percent" style="font-size: 27px;">
+                                    <span aria-hidden="true"> 100% </span>
+                                    <span id="current-score-description" class="sr-only">Accessibility score: 100 percent</span>
+                                </div>
+                            </div>
+                        </feedback-score-meter>
+                        <h1 tabindex="-1">AV Student Assistant Onboarding and Fundamentals</h1>
+                    </div>
+                    <h2>Course accessibility score</h2>
+                </div>
+            </ir-course-header>
+
+            <ir-course-tabs>
+                <div id="ir-course-tabs">
+                    <ul role="tablist" class="tabset-tabs">
+                        <li role="presentation" class="tabset-tab active"><button id="ir-tab-course-overview" aria-selected="true"> Overview </button></li>
+                        <li role="presentation" class="tabset-tab"><button id="ir-tab-course-content" aria-selected="false"> Content </button></li>
+                    </ul>
+                </div>
+            </ir-course-tabs>
+
+            <div class="tabset-tab-panel" id="ir-tab-course-overview-panel" role="tabpanel">
+                <div id="ir-course-overview-breakdown">
+                    <div id="ir-course-overview-content-breakdown">
+                        <div id="ir-course-overview-content-breakdown-chart-container" aria-hidden="true">
+                            <ir-pie-chart width="285">
+                                <div class="pie-chart-chart" style="overflow: hidden; width: 285px; height: 285px;">
+                                    <svg version="1.1" class="highcharts-root" xmlns="http://www.w3.org/2000/svg" width="285" height="285" viewBox="0 0 285 285">
+                                        <!-- Rendered Pie Sectors via Color Palette Configurations -->
+                                        <g class="highcharts-series-group" data-z-index="3">
+                                            <g class="highcharts-series highcharts-series-0 highcharts-pie-series" opacity="1">
+                                                <!-- HTML Fragments Segment (Teal) -->
+                                                <path fill="rgb(1,188,213)" d="M 132.4777996207972 21.0000022608112 A 109 109 0 1 1 65.65272639393065 216.09554002058007 L 92.39163583635838 181.65732401234806 A 65.4 65.4 0 1 0 132.48667977247834 64.60000135648671 Z" stroke="#ffffff" stroke-width="1"></path>
+                                                <!-- Other Segment (Green) -->
+                                                <path fill="rgb(139,195,74)" d="M 65.56666429189335 216.0286497103488 A 109 109 0 0 1 52.257824918080985 56.22877703248608 L 84.35469495084858 85.73726621949163 A 65.4 65.4 0 0 0 92.33999857513601 181.61718982620928 Z" stroke="#ffffff" stroke-width="1"></path>
+                                                <!-- Module Segment (Yellow) -->
+                                                <path fill="rgb(252,192,16)" d="M 52.33163624983747 56.148571756386275 A 109 109 0 0 1 114.44717062398294 22.505370592199284 L 121.66830237438977 65.50322235531956 A 65.4 65.4 0 0 0 84.39898174990248 85.68914305383177 Z" stroke="#ffffff" stroke-width="1"></path>
+                                                <!-- Quiz Segment (Orange) -->
+                                                <path fill="#FB730A" d="M 114.55467426188895 22.487371513142293 A 109 109 0 0 1 132.3486011867502 21.000105145007836 L 132.40916071205012 64.6000630870047 A 65.4 65.4 0 0 0 121.73280455713336 65.49242290788537 Z" stroke="#ffffff" stroke-width="1"></path>
+                                            </g>
+                                        </g>
+                                        <text x="143" text-anchor="middle" style="color: rgb(51, 51, 51); font-size: 3em; font-family: sans-serif; fill: rgb(51, 51, 51);" y="153">76</text>
+                                    </svg>
+                                </div>
+                            </ir-pie-chart>
+                        </div>
+                        
+                        <div id="ir-course-overview-content-breakdown-legend-container">
+                            <h3 id="ir-all-course-content">All course content</h3>
+                            <table cellpadding="0" cellspacing="0">
+                                <thead>
+                                    <tr class="sr-only">
+                                        <th>Content type</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div><span class="ir-course-overview-content-breakdown-colorbox" style="background-color: rgb(1, 188, 213);"></span><span>HTML fragment</span></div>
+                                        </td>
+                                        <td>46</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div><span class="ir-course-overview-content-breakdown-colorbox" style="background-color: rgb(139, 195, 74);"></span><span>Other</span></div>
+                                        </td>
+                                        <td>20</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div><span class="ir-course-overview-content-breakdown-colorbox" style="background-color: rgb(252, 192, 16);"></span><span>Module</span></div>
+                                        </td>
+                                        <td>8</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div><span class="ir-course-overview-content-breakdown-colorbox" style="background-color: rgb(251, 115, 10);"></span><span>Quiz</span></div>
+                                        </td>
+                                        <td>2</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="ir-course-files">
+                    <ir-congratulations>
+                        <div class="ir-congratulations-illustration">
+                            <!-- High Contrast Fallback block color space handles decoration without file dependencies -->
+                            <div style="width: 100%; height: 100px; background-color: #333;"></div>
+                        </div>
+                        <div class="ir-congratulations-content">
+                            <h4>Congratulations! You fixed all accessibility issues in your course.</h4>
+                            <a href="https://usergroup.ally.ac/" target="_blank" rel="noopener" class="btn">Join the Blackboard Ally User Group</a>
+                        </div>
+                    </ir-congratulations>
+                </div>
+            </div>
+        </div>
+    </app-root>
+</body>
+</html>
