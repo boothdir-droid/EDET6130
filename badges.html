@@ -105,30 +105,6 @@
             padding-bottom: 10px;
         }
 
-        /* Central Visual Block for uploaded asset */
-        .badge-image-container {
-            text-align: center;
-            margin-bottom: 40px;
-            padding: 20px;
-            background-color: #F8FAFC;
-            border: 1px dashed #CBD5E0;
-            border-radius: 8px;
-        }
-
-        .badge-main-asset {
-            max-width: 100%;
-            height: auto;
-            border-radius: 6px;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
-        }
-
-        .asset-caption {
-            font-size: 0.85rem;
-            color: #718096;
-            margin-top: 10px;
-            font-style: italic;
-        }
-
         /* Modules Matrix Layout */
         .modules-grid {
             display: flex;
@@ -148,7 +124,7 @@
 
         @media (min-width: 768px) {
             .module-row {
-                grid-template-columns: 180px 1fr;
+                grid-template-columns: 200px 1fr;
             }
         }
 
@@ -173,24 +149,27 @@
             background-color: #EBF8FF;
         }
 
+        /* Responsive badge sizing block */
+        .badge-display-img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+
         .module-number {
             font-size: 0.8rem;
             font-weight: 700;
             color: #4A5568;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-bottom: 4px;
         }
 
-        .badge-pill {
-            background-color: #2B6CB0;
-            color: #FFFFFF;
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 4px 10px;
-            border-radius: 4px;
-            margin-top: 8px;
-            text-transform: uppercase;
+        .file-label-text {
+            font-family: monospace;
+            font-size: 0.7rem;
+            color: #718096;
+            margin-top: 4px;
         }
 
         .module-info {
@@ -245,7 +224,6 @@
             <p class="header-meta">Digital Badge Credential Architecture & Micro-Learning Pathways</p>
         </header>
 
-        <!-- Overview Section -->
         <div class="overview-panel">
             <h2>Micro-Credentialing Design Framework</h2>
             <p>
@@ -253,167 +231,159 @@
             </p>
         </div>
 
-        <!-- Badges Master Showcase -->
         <div class="badge-showcase">
             <h2>Digital Badges Registry</h2>
-            
-            <!-- Embedded Core Image Asset -->
-            <div class="badge-image-container">
-                <img src="image_b43b89.png" alt="AV Student Assistant Onboarding Digital Badges Grid" class="badge-main-asset">
-                <div class="asset-caption">Figure 1.1: Core Digital Badging Graphic Block Assets for Program Modules</div>
-            </div>
 
-            <!-- Module Index and Mapping Matrix -->
             <div class="modules-grid">
                 
-                <!-- Module 1 -->
                 <div class="module-row">
                     <div class="module-badge-meta">
+                        <img src="module_1_badge.png" alt="Module 1 Badge" class="badge-display-img">
                         <span class="module-number">Module 1</span>
-                        <div class="badge-pill">Role Found.</div>
+                        <span class="file-label-text">module_1_badge.png</span>
                     </div>
                     <div class="module-info">
                         <h3 class="module-title">Introduction to the AV Student Assistant Position</h3>
                         <p class="module-desc">
-                            Understand the structural role, core responsibilities, and required training platforms (Extron, AVIXA, LinkedIn Learning, Legrand AV). Covers basic department layout, key personnel, technology enhanced classroom support, and professional communication expectations.
+                            Understand the structural role, core responsibilities, and required training platforms (Extron, AVIXA, LinkedIn Learning, Legrand AV). Covers basic department layout, key personnel, technology enhanced classroom support, and professional communication expectations. 
                         </p>
                         <div class="skills-list">
-                            <span class="skill-tag">Department Structure</span>
-                            <span class="skill-tag">Training Portals</span>
-                            <span class="skill-tag">Professional Expectations</span>
+                            <span class="skill-tag">Department Structure</span> 
+                            <span class="skill-tag">Training Portals</span> 
+                            <span class="skill-tag">Professional Expectations</span> 
                         </div>
                     </div>
                 </div>
 
-                <!-- Module 2 -->
                 <div class="module-row">
                     <div class="module-badge-meta">
+                        <img src="module_2_badge.png" alt="Module 2 Badge" class="badge-display-img">
                         <span class="module-number">Module 2</span>
-                        <div class="badge-pill">Admin & Ops</div>
+                        <span class="file-label-text">module_2_badge.png</span>
                     </div>
                     <div class="module-info">
                         <h3 class="module-title">Administrative Procedures and Expectations</h3>
                         <p class="module-desc">
-                            Mastery of operational logistics, shift procedures, scheduling/HR requirements, and the timecard system. Focuses on communication rules, Microsoft Teams standards, and the 15-minute Escalation Protocol.
+                            Mastery of operational logistics, shift procedures, scheduling/HR requirements, and the timecard system. Focuses on communication rules, Microsoft Teams standards, and the 15-minute Escalation Protocol. 
                         </p>
                         <div class="skills-list">
-                            <span class="skill-tag">Shift Procedures</span>
-                            <span class="skill-tag">Escalation Protocol</span>
-                            <span class="skill-tag">Microsoft Teams</span>
+                            <span class="skill-tag">Shift Procedures</span> 
+                            <span class="skill-tag">Escalation Protocol</span> 
+                            <span class="skill-tag">Microsoft Teams</span> 
                         </div>
                     </div>
                 </div>
 
-                <!-- Module 3 -->
                 <div class="module-row">
                     <div class="module-badge-meta">
+                        <img src="module_3_badge.png" alt="Module 3 Badge" class="badge-display-img">
                         <span class="module-number">Module 3</span>
-                        <div class="badge-pill">AV & IT Fund.</div>
+                        <span class="file-label-text">module_3_badge.png</span>
                     </div>
                     <div class="module-info">
                         <h3 class="module-title">AV Fundamentals & IT Integration</h3>
                         <p class="module-desc">
-                            Builds foundational understanding of AV terminology, signal fundamentals (analog vs digital, resolution, inputs vs outputs), and convergence with IT networking operations. Explores critical technical protocols such as EDID display communication and HDCP content protection.
+                            Builds foundational understanding of AV terminology, signal fundamentals (analog vs digital, resolution, inputs vs outputs), and convergence with IT networking operations. Explores critical technical protocols such as EDID display communication and HDCP content protection. 
                         </p>
                         <div class="skills-list">
-                            <span class="skill-tag">Signal Logic</span>
-                            <span class="skill-tag">EDID & HDCP</span>
-                            <span class="skill-tag">AV/IT Convergence</span>
+                            <span class="skill-tag">Signal Logic</span> 
+                            <span class="skill-tag">EDID & HDCP</span> 
+                            <span class="skill-tag">AV/IT Convergence</span> 
                         </div>
                     </div>
                 </div>
 
-                <!-- Module 4 -->
                 <div class="module-row">
                     <div class="module-badge-meta">
+                        <img src="module_4_badge.png" alt="Module 4 Badge" class="badge-display-img">
                         <span class="module-number">Module 4</span>
-                        <div class="badge-pill">Cables Lab</div>
+                        <span class="file-label-text">module_4_badge.png</span>
                     </div>
                     <div class="module-info">
                         <h3 class="module-title">Cables & Connector Lab</h3>
                         <p class="module-desc">
-                            Hands-on identification and recognition of physical connectors (HDMI, VGA, XLR, RCA, Speakon, USB) and signaling types. Teaches common structural failure points like cable degradation, length limits, and loose interface joints.
+                            Hands-on identification and recognition of physical connectors (HDMI, VGA, XLR, RCA, Speakon, USB) and signaling types. Teaches common structural failure points like cable degradation, length limits, and loose interface joints. 
                         </p>
                         <div class="skills-list">
-                            <span class="skill-tag">Connector Matching</span>
-                            <span class="skill-tag">Signal Types</span>
-                            <span class="skill-tag">Physical Diagnostics</span>
+                            <span class="skill-tag">Connector Matching</span> 
+                            <span class="skill-tag">Signal Types</span> 
+                            <span class="skill-tag">Physical Diagnostics</span> 
                         </div>
                     </div>
                 </div>
 
-                <!-- Module 5 -->
                 <div class="module-row">
                     <div class="module-badge-meta">
+                        <img src="module_5_badge.png" alt="Module 5 Badge" class="badge-display-img">
                         <span class="module-number">Module 5</span>
-                        <div class="badge-pill">TEC Anatomy</div>
+                        <span class="file-label-text">module_5_badge.png</span>
                     </div>
                     <div class="module-info">
                         <h3 class="module-title">Typical AV System (Anatomy of a TEC)</h3>
                         <p class="module-desc">
-                            Deep dive into the architecture of real classroom systems following the explicit signal journey: Source → Transport → Processing → Output + Control. Covers hardware components like laptops, podium PCs, and document cameras.
+                            Deep dive into the architecture of real classroom systems following the explicit signal journey: Source → Transport → Processing → Output + Control. Covers hardware components like laptops, podium PCs, and document cameras. 
                         </p>
                         <div class="skills-list">
-                            <span class="skill-tag">System Architecture</span>
-                            <span class="skill-tag">Source Components</span>
-                            <span class="skill-tag">Signal Transport</span>
+                            <span class="skill-tag">System Architecture</span> 
+                            <span class="skill-tag">Source Components</span> 
+                            <span class="skill-tag">Signal Transport</span> 
                         </div>
                     </div>
                 </div>
 
-                <!-- Module 6 -->
                 <div class="module-row">
                     <div class="module-badge-meta">
+                        <img src="module_6_badge.png" alt="Module 6 Badge" class="badge-display-img">
                         <span class="module-number">Module 6</span>
-                        <div class="badge-pill">Troubleshoot</div>
+                        <span class="file-label-text">module_6_badge.png</span>
                     </div>
                     <div class="module-info">
                         <h3 class="module-title">Troubleshooting (Primary Skill Module)</h3>
                         <p class="module-desc">
-                            Develops a structured diagnostic mindset to resolve real classroom failure scenarios (no video, no audio, sync errors, or green screens). Follows a formal script: Identify → Isolate → Test → Resolve without guessing, while methodically tracking signal paths.
+                            Develops a structured diagnostic mindset to resolve real classroom failure scenarios (no video, no audio, sync errors, or green screens). Follows a formal script: Identify → Isolate → Test → Resolve without guessing, while methodically tracking signal paths. 
                         </p>
                         <div class="skills-list">
-                            <span class="skill-tag">Diagnostic Mindset</span>
-                            <span class="skill-tag">Signal Tracing</span>
-                            <span class="skill-tag">Fault Isolation</span>
+                            <span class="skill-tag">Diagnostic Mindset</span> 
+                            <span class="skill-tag">Signal Tracing</span> 
+                            <span class="skill-tag">Fault Isolation</span> 
                         </div>
                     </div>
                 </div>
 
-                <!-- Module 7 -->
                 <div class="module-row">
                     <div class="module-badge-meta">
+                        <img src="module_7_badge.png" alt="Module 7 Badge" class="badge-display-img">
                         <span class="module-number">Module 7</span>
-                        <div class="badge-pill">Installation</div>
+                        <span class="file-label-text">module_7_badge.png</span>
                     </div>
                     <div class="module-info">
                         <h3 class="module-title">Installation Best Practices</h3>
                         <p class="module-desc">
-                            Core principles of safe and efficient physical environment construction. Covers rack building, thermal cooling/airflow alignment, hardware display mounting, speaker placement, network config, and standard cable labeling techniques.
+                            Core principles of safe and efficient physical environment construction. Covers rack building, thermal cooling/airflow alignment, hardware display mounting, speaker placement, network config, and standard cable labeling techniques. 
                         </p>
                         <div class="skills-list">
-                            <span class="skill-tag">Rack Building</span>
-                            <span class="skill-tag">Hardware Mounting</span>
-                            <span class="skill-tag">Labeling Standards</span>
+                            <span class="skill-tag">Rack Building</span> 
+                            <span class="skill-tag">Hardware Mounting</span> 
+                            <span class="skill-tag">Labeling Standards</span> 
                         </div>
                     </div>
                 </div>
 
-                <!-- Module 8 -->
                 <div class="module-row">
                     <div class="module-badge-meta">
+                        <img src="module_8_badge.png" alt="Module 8 Badge" class="badge-display-img">
                         <span class="module-number">Module 8</span>
-                        <div class="badge-pill">Prof. Dev.</div>
+                        <span class="file-label-text">module_8_badge.png</span>
                     </div>
                     <div class="module-info">
                         <h3 class="module-title">Ongoing Professional Development</h3>
                         <p class="module-desc">
-                            Long-term career roadmap building. Guides advanced student assistants toward expanding technical skill strategies, pursuing external industry benchmarks, and achieving formal professional certification opportunities.
+                            Long-term career roadmap building. Guides advanced student assistants toward expanding technical skill strategies, pursuing external industry benchmarks, and achieving formal professional certification opportunities. 
                         </p>
                         <div class="skills-list">
-                            <span class="skill-tag">Skill Strategy</span>
-                            <span class="skill-tag">Industry Standards</span>
-                            <span class="skill-tag">Certification Pathways</span>
+                            <span class="skill-tag">Skill Strategy</span> 
+                            <span class="skill-tag">Industry Standards</span> 
+                            <span class="skill-tag">Certification Pathways</span> 
                         </div>
                     </div>
                 </div>
