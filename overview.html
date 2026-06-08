@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Overview — AV Student Assistant Onboarding</title>
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #2D3748;
+            background-color: #F0F4F8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1A365D 0%, #2A4365 100%);
+            color: #FFFFFF;
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(26, 54, 93, 0.15);
+            margin-bottom: 40px;
+            border-bottom: 5px solid #D69E2E;
+        }
+
+        .course-tag {
+            background-color: #D69E2E;
+            color: #1A365D;
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        header h1 {
+            margin: 0 0 10px 0;
+            font-size: 2.2rem;
+            letter-spacing: -0.5px;
+        }
+
+        .header-meta {
+            margin: 0;
+            font-size: 1.1rem;
+            color: #E2E8F0;
+            opacity: 0.95;
+        }
+
+        /* Section Layout styles */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        @media (min-width: 768px) {
+            .grid-layout {
+                grid-template-columns: 2fr 1fr;
+            }
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .card {
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 35px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #1A365D;
+            font-size: 1.5rem;
+            border-bottom: 2px solid #EDF2F7;
+            padding-bottom: 10px;
+        }
+
+        p {
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            color: #4A5568;
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Callout Box styles */
+        .problem-callout {
+            background-color: #FFF5F5;
+            border-left: 5px solid #E53E3E;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 1.5rem;
+        }
+
+        .problem-callout h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #9B2C2C;
+            font-size: 1.15rem;
+        }
+
+        .problem-callout p {
+            margin: 0;
+            color: #742A2A;
+            font-size: 0.95rem;
+        }
+
+        /* Milestone List */
+        .milestone-timeline {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 0;
+            position: relative;
+        }
+
+        .milestone-timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 10px;
+            bottom: 10px;
+            width: 2px;
+            background-color: #E2E8F0;
+        }
+
+        .milestone-item {
+            position: relative;
+            padding-left: 45px;
+            margin-bottom: 25px;
+        }
+
+        .milestone-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .milestone-marker {
+            position: absolute;
+            left: 0;
+            top: 2px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: #1A365D;
+            color: #FFFFFF;
+            font-weight: bold;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid #FFFFFF;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 2;
+        }
+
+        .milestone-item.active .milestone-marker {
+            background-color: #D69E2E;
+            color: #1A365D;
+        }
+
+        .milestone-title {
+            font-weight: 700;
+            color: #2D3748;
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .milestone-desc {
+            font-size: 0.9rem;
+            color: #718096;
+            margin: 0;
+        }
+
+        /* Sidebar styles */
+        .sidebar-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .summary-stat-box {
+            background: linear-gradient(135deg, #2B6CB0 0%, #1A365D 100%);
+            color: #FFFFFF;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(43, 108, 176, 0.2);
+        }
+
+        .summary-stat-box .num {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #D69E2E;
+            line-height: 1;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .summary-stat-box .label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.9;
+        }
+
+        .quick-links-list {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .quick-links-list li {
+            margin-bottom: 12px;
+        }
+
+        .quick-links-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .quick-links-list a {
+            display: block;
+            padding: 12px 16px;
+            background-color: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            color: #2B6CB0;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .quick-links-list a:hover {
+            background-color: #EBF8FF;
+            border-color: #4299E1;
+            transform: translateX(3px);
+        }
+
+        footer {
+            margin-top: 60px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #718096;
+            border-top: 1px solid #E2E8F0;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <span class="course-tag">EDET 6130 — Capstone Portfolio</span>
+            <h1>Project Overview & Strategic Justification</h1>
+            <p class="header-meta">AV Student Assistant Onboarding and Fundamentals Training System</p>
+        </header>
+
+        <div class="grid-layout">
+            <!-- Left Column: Master Narrative -->
+            <div class="main-content">
+                
+                <!-- The Problem & Departmental Need -->
+                <div class="card">
+                    <h2>The Departmental Challenge</h2>
+                    <p>
+                        Within our institutional AV Operations Department, the onboarding and instruction of new student technicians has historically relied on an unstructured model. Legacy procedures heavily leveraged an informal "peer shadowing" system, where a newly hired assistant simply followed an experienced student around during regular field operations.
+                    </p>
+                    
+                    <div class="problem-callout">
+                        <h3>Critical Flaws in the Peer Shadowing Model</h3>
+                        <p>
+                            Shadowing introduces massive operational variances based on the random technical problems encountered that day, fails to systematically reinforce critical safety or network engineering logic, and passes down bad technical habits or inconsistent diagnostic assumptions between student cohorts.
+                        </p>
+                    </div>
+
+                    <p>
+                        Furthermore, building a structured training solution cannot result in a management bottleneck that demands significantly more of a director or full-time coordinator's personal time on a daily basis. The AV Operations Department operates in a fast-paced environment supporting dozens of Technology Enhanced Classrooms (TECs) and live events[cite: 3, 5]. Any viable solution must be highly scalable, automated where possible, and capable of operating independently without constant staff intervention.
+                    </p>
+                </div>
+
+                <!-- The Solution & Objectives -->
+                <div class="card">
+                    <h2>The Strategic Solution</h2>
+                    <p>
+                        This project addresses that gap by designing and implementing a formalized, asynchronous, and competency-based micro-credentialing system. Instead of leaving skills to chance, the training program isolates key capabilities into 8 distinct learning modules built directly upon our official technical outline. 
+                    </p>
+                    <p>
+                        By moving the framework to a structured digital architecture, we realize several critical objectives:
+                    </p>
+                    <p style="padding-left: 15px; border-left: 3px solid #D69E2E;">
+                        <strong>Efficiency & Reliability:</strong> Every student assistant now receives an identical, high-standard baseline instruction in troubleshooting signal logic, cable identification, rack fabrication, and customer service protocols[cite: 1]. Mastery is explicitly verified via objective diagnostic checkpoints and practical lab challenges rather than passive observation[cite: 1].
+                    </p>
+                    <p style="padding-left: 15px; border-left: 3px solid #D69E2E;">
+                        <strong>Time Preservation:</strong> The structural load of instruction moves into the custom-designed learning system, training portals, and structured resources[cite: 1]. Full-time staff hours are optimized because management interaction shifts from repetitive lecturing to high-impact physical evaluations at the culmination of specific module milestones[cite: 1].
+                    </p>
+                </div>
+
+                <!-- Steps Taken So Far -->
+                <div class="card">
+                    <h2>Development Progress Timeline</h2>
+                    <p>
+                        To reach a verifiable instructional deployment phase, the project has executed several milestone sprints to map variables, construct media blocks, and lock down technical criteria:
+                    </p>
+                    
+                    <div class="milestone-timeline">
+                        <div class="milestone-item">
+                            <span class="milestone-marker">1</span>
+                            <span class="milestone-title">Syllabus Staging & Outline Freezing</span>
+                            <p class="milestone-desc">Compiled and finalized the complete 8-module curriculum blueprint from administrative shift expectations through advanced installation safety variables[cite: 1].</p>
+                        </div>
+                        <div class="milestone-item">
+                            <span class="milestone-marker">2</span>
+                            <span class="milestone-title">Learning Objectives Refinement</span>
+                            <p class="milestone-desc">Formulated 3 to 5 clear, behavioral learning outcomes per module using rigorous cognitive verbs to ensure clear validation boundaries[cite: 1].</p>
+                        </div>
+                        <div class="milestone-item">
+                            <span class="milestone-marker">3</span>
+                            <span class="milestone-title">Media Block & Digital Badging Design</span>
+                            <p class="milestone-desc">Constructed the graphical framework interface banners and sequential micro-credentialing badge grid to reward skill checkpoints[cite: 1, 7].</p>
+                        </div>
+                        <div class="milestone-item">
+                            <span class="milestone-marker">4</span>
+                            <span class="milestone-title">Cognitive Filter & Retention Loop Analysis</span>
+                            <p class="milestone-desc">Leveraged deep multi-turn AI synthesis prompts and behavioral decay models to replace guess-based learning loss variables with data-grounded metrics for study evaluation.</p>
+                        </div>
+                        <div class="milestone-item active">
+                            <span class="milestone-marker">5</span>
+                            <span class="milestone-title">Platform Verification & Ally Auditing</span>
+                            <p class="milestone-desc">Executed deep automated interface assessments, achieving a perfect 100% course accessibility rating to ensure universal design compliance[cite: 11].</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Column: Sidebar Metrics & Navigation -->
+            <div class="sidebar-panel">
+                
+                <!-- Stat Card -->
+                <div class="summary-stat-box">
+                    <span class="num">8</span>
+                    <span class="label">Training Modules</span>[cite: 1]
+                </div>
+                
+                <div class="summary-stat-box" style="background: linear-gradient(135deg, #2F855A 0%, #22543D 100%);">
+                    <span class="num">100%</span>
+                    <span class="label">Accessibility Score</span>[cite: 11]
+                </div>
+
+                <!-- Portfolio Navigation -->
+                <div class="card" style="padding: 25px;">
+                    <h2 style="font-size: 1.2rem; margin-bottom: 15px;">Portfolio Modules</h2>
+                    <ul class="quick-links-list">
+                        <li><a href="course_outline.html">Syllabus Master Outline ↗</a></li>
+                        <li><a href="learning_objectives.html">Behavioral Learning Objectives ↗</a></li>
+                        <li><a href="badges.html">Digital Badges Registry ↗</a></li>
+                        <li><a href="module_graphics.html">Interface Banner Graphics ↗</a></li>
+                        <li><a href="learning_retention.html">Retention Model Analysis ↗</a></li>
+                        <li><a href="av_failure_scenarios.html">Failure Scenarios Dataset ↗</a></li>
+                    </ul>
+                </div>
+
+                <!-- Institutional Notice -->
+                <div class="card" style="padding: 20px; background-color: #F8FAFC; border-color: #CBD5E0;">
+                    <p style="font-size: 0.8rem; line-height: 1.4; color: #718096; margin: 0; font-style: italic;">
+                        This platform portfolio aggregates core training framework parameters engineered under the oversight of the AV Operations Department. All components comply with educational technology integration standards.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <footer>
+            <p>AV Operations Department — Instructional Design & Architecture Repository</p>
+            <p style="font-size: 0.75rem; margin-top: 5px;">EDET 6130 Course Capstone Framework Portfolio Asset Only</p>
+        </footer>
+    </div>
+
+</body>
+</html>
