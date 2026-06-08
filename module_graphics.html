@@ -30,7 +30,7 @@
             padding: 35px 30px;
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(26, 54, 93, 0.1);
-            margin-bottom: 40px;
+            margin-bottom: 35px;
             border-bottom: 5px solid #D69E2E;
         }
 
@@ -60,6 +60,35 @@
             opacity: 0.95;
         }
 
+        /* Top Course Banner Showcase */
+        .main-banner-block {
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            margin-bottom: 35px;
+            text-align: center;
+        }
+
+        .main-banner-block h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #1A365D;
+            font-size: 1.35rem;
+            border-bottom: 2px solid #EDF2F7;
+            padding-bottom: 8px;
+            text-align: left;
+        }
+
+        .master-banner-render {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            border: 1px solid #CBD5E0;
+        }
+
         /* Overview Section */
         .overview-panel {
             background: #FFFFFF;
@@ -86,71 +115,53 @@
             text-align: justify;
         }
 
-        /* Central Image Asset Panel */
-        .graphics-asset-block {
-            background: #FFFFFF;
-            border: 1px solid #E2E8F0;
-            border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-            margin-bottom: 40px;
-            text-align: center;
-        }
-
-        .graphics-asset-block h2 {
-            margin-top: 0;
-            margin-bottom: 25px;
-            color: #1A365D;
-            font-size: 1.4rem;
-            border-bottom: 2px solid #EDF2F7;
-            padding-bottom: 8px;
-            text-align: left;
-        }
-
-        .main-graphic-render {
-            max-width: 100%;
-            height: auto;
-            border-radius: 6px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-            border: 1px solid #CBD5E0;
-        }
-
-        .caption-text {
-            font-size: 0.85rem;
-            color: #718096;
-            margin-top: 12px;
-            font-style: italic;
-        }
-
         /* Syllabus Layout Mapping Grid */
         .graphics-mapping-list {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 30px;
         }
 
         .mapping-card {
             background: #FFFFFF;
             border: 1px solid #E2E8F0;
             border-radius: 8px;
-            padding: 25px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.01);
-            border-left: 4px solid #2B6CB0;
+            padding: 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            overflow: hidden;
+            border-left: 5px solid #2B6CB0;
             transition: transform 0.15s ease, border-color 0.15s ease;
         }
 
         .mapping-card:hover {
-            transform: translateX(3px);
+            transform: translateY(-2px);
             border-color: #3182CE;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+        }
+
+        .card-banner-wrapper {
+            width: 100%;
+            background-color: #EDF2F7;
+            border-bottom: 1px solid #E2E8F0;
+            line-height: 0;
+        }
+
+        .card-banner-img {
+            width: 100%;
+            height: auto;
+            max-height: 180px;
+            object-fit: cover;
+        }
+
+        .card-body-content {
+            padding: 25px;
         }
 
         .card-header-line {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #EDF2F7;
-            padding-bottom: 8px;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .module-id-label {
@@ -161,26 +172,27 @@
             letter-spacing: 0.5px;
         }
 
-        .component-use-tag {
-            background-color: #EBF8FF;
-            color: #2B6CB0;
+        .file-name-tag {
+            font-family: monospace;
+            background-color: #EDF2F7;
+            color: #4A5568;
             font-size: 0.75rem;
-            font-weight: 600;
-            padding: 2px 8px;
+            padding: 2px 6px;
             border-radius: 4px;
+            border: 1px solid #E2E8F0;
         }
 
         .module-title-text {
-            margin: 0 0 10px 0;
-            font-size: 1.2rem;
-            color: #2D3748;
+            margin: 0 0 12px 0;
+            font-size: 1.30rem;
+            color: #1A365D;
         }
 
         .module-desc-text {
             margin: 0;
             color: #4A5568;
             font-size: 0.95rem;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         footer {
@@ -202,118 +214,146 @@
             <p class="header-meta">AV Student Assistant Onboarding and Fundamentals — Learning Design Repository</p>
         </header>
 
-        <!-- Functional Overview -->
+        <div class="main-banner-block">
+            <h2>Master Course Banner Asset</h2>
+            <img src="course_banner.png" alt="AV Student Assistant Training Course Master Banner" class="master-banner-render">
+        </div>
+
         <div class="overview-panel">
             <h2>Graphic Asset Deployment Strategy</h2>
             <p>
-                This registry catalogues the standardized banner configurations and structural layout blocks deployed across our course platform. To preserve branding consistency, these items are mapped exclusively to the AV Operations Department, completely eliminating legacy unit sub-headings. They are engineered to render cleanly across learning management modules and student handbook interfaces.
+                This registry catalogues the individual module banner assets deployed across our training course platform. Each graphic is uniquely mapped to its corresponding topic from the official syllabus outline. To maintain institutional branding guidelines, these assets focus explicitly on the identity of the AV Operations Department.
             </p>
         </div>
 
-        <!-- Central Graphics Showcase Block -->
-        <div class="graphics-asset-block">
-            <h2>Course Module Banner Block</h2>
-            <img src="image_b340bf.png" alt="AV Student Assistant Training Course Module Header Graphic" class="main-graphic-render">
-            <div class="caption-text">Figure 1.2: Core Course Interface Block Asset for Syllabus Content Delivery</div>
-        </div>
-
-        <!-- 8 Modules Application Map -->
         <div class="graphics-mapping-list">
             
-            <!-- Module 1 -->
             <div class="mapping-card">
-                <div class="card-header-line">
-                    <span class="module-id-label">Module 1 Deployment</span>
-                    <span class="component-use-tag">Header Block 01</span>
+                <div class="card-banner-wrapper">
+                    <img src="module_1.png" alt="Module 1 Graphic Banner" class="card-banner-img">
                 </div>
-                <h3 class="module-title-text">Introduction to the AV Student Assistant Position</h3>
-                <p class="module-desc_text">
-                    Applies the organizational identity block to establish immediate role clarity, detailing the hierarchy of the AV Operations Department, key campus support interfaces, and professional communication benchmarks across external training portals.
-                </p>
+                <div class="card-body-content">
+                    <div class="card-header-line">
+                        <span class="module-id-label">Module 1</span>
+                        <span class="file-name-tag">module_1.png</span>
+                    </div>
+                    <h3 class="module-title-text">Introduction to the AV Student Assistant Position</h3>
+                    <p class="module-desc-text">
+                        Applies the organizational identity block to establish immediate role clarity, detailing the hierarchy of the AV Operations Department, key campus support interfaces, and professional communication benchmarks across external training portals.
+                    </p>
+                </div>
             </div>
 
-            <!-- Module 2 -->
             <div class="mapping-card">
-                <div class="card-header-line">
-                    <span class="module-id-label">Module 2 Deployment</span>
-                    <span class="component-use-tag">Header Block 02</span>
+                <div class="card-banner-wrapper">
+                    <img src="module_2.png" alt="Module 2 Graphic Banner" class="card-banner-img">
                 </div>
-                <h3 class="module-title-text">Administrative Procedures and Expectations</h3>
-                <p class="module-desc-text">
-                    Frames administrative support rules, shift transitions, timecard management compliance structures, and the communication matrix underpinning the 15-minute emergency escalation protocol.
-                </p>
+                <div class="card-body-content">
+                    <div class="card-header-line">
+                        <span class="module-id-label">Module 2</span>
+                        <span class="file-name-tag">module_2.png</span>
+                    </div>
+                    <h3 class="module-title-text">Administrative Procedures and Expectations</h3>
+                    <p class="module-desc-text">
+                        Frames administrative support rules, shift transitions, timecard management compliance structures, and the communication matrix underpinning the 15-minute emergency escalation protocol.
+                    </p>
+                </div>
             </div>
 
-            <!-- Module 3 -->
             <div class="mapping-card">
-                <div class="card-header-line">
-                    <span class="module-id-label">Module 3 Deployment</span>
-                    <span class="component-use-tag">Header Block 03</span>
+                <div class="card-banner-wrapper">
+                    <img src="module_3.png" alt="Module 3 Graphic Banner" class="card-banner-img">
                 </div>
-                <h3 class="module-title-text">AV Fundamentals & IT Integration</h3>
-                <p class="module-desc-text">
-                    Deployed at the introduction of baseline engineering science concepts, mapping out the convergent spaces of network-based AV extension, signal resolution rules, and display protocols like EDID and HDCP handshake boundaries.
-                </p>
+                <div class="card-body-content">
+                    <div class="card-header-line">
+                        <span class="module-id-label">Module 3</span>
+                        <span class="file-name-tag">module_3.png</span>
+                    </div>
+                    <h3 class="module-title-text">AV Fundamentals & IT Integration</h3>
+                    <p class="module-desc-text">
+                        Deployed at the introduction of baseline engineering science concepts, mapping out the convergent spaces of network-based AV extension, signal resolution rules, and display protocols like EDID and HDCP handshake boundaries.
+                    </p>
+                </div>
             </div>
 
-            <!-- Module 4 -->
             <div class="mapping-card">
-                <div class="card-header-line">
-                    <span class="module-id-label">Module 4 Deployment</span>
-                    <span class="component-use-tag">Header Block 04</span>
+                <div class="card-banner-wrapper">
+                    <img src="module_4.png" alt="Module 4 Graphic Banner" class="card-banner-img">
                 </div>
-                <h3 class="module-title-text">Cables & Connector Lab</h3>
-                <p class="module-desc-text">
-                    Acts as the visual anchor for physical diagnostics, laboratory identification milestones, use-case matching for common formats (HDMI, USB-C, XLR, VGA), and tracing physical line degradation points.
-                </p>
+                <div class="card-body-content">
+                    <div class="card-header-line">
+                        <span class="module-id-label">Module 4</span>
+                        <span class="file-name-tag">module_4.png</span>
+                    </div>
+                    <h3 class="module-title-text">Cables & Connector Lab</h3>
+                    <p class="module-desc-text">
+                        Acts as the visual anchor for physical diagnostics, laboratory identification milestones, use-case matching for common formats (HDMI, USB-C, XLR, VGA), and tracing physical line degradation points.
+                    </p>
+                </div>
             </div>
 
-            <!-- Module 5 -->
             <div class="mapping-card">
-                <div class="card-header-line">
-                    <span class="module-id-label">Module 5 Deployment</span>
-                    <span class="component-use-tag">Header Block 05</span>
+                <div class="card-banner-wrapper">
+                    <img src="module_5.png" alt="Module 5 Graphic Banner" class="card-banner-img">
                 </div>
-                <h3 class="module-title-text">Typical AV System (Anatomy of a TEC)</h3>
-                <p class="module-desc-text">
-                    Deconstructs active technology enhanced classroom layouts, providing a clean frame for tracing hardware loops sequentially from source devices straight through transport, processing, and output nodes.
-                </p>
+                <div class="card-body-content">
+                    <div class="card-header-line">
+                        <span class="module-id-label">Module 5</span>
+                        <span class="file-name-tag">module_5.png</span>
+                    </div>
+                    <h3 class="module-title-text">Typical AV System (Anatomy of a TEC)</h3>
+                    <p class="module-desc-text">
+                        Deconstructs active technology enhanced classroom layouts, providing a clean frame for tracing hardware loops sequentially from source devices straight through transport, processing, and output nodes.
+                    </p>
+                </div>
             </div>
 
-            <!-- Module 6 -->
             <div class="mapping-card">
-                <div class="card-header-line">
-                    <span class="module-id-label">Module 6 Deployment</span>
-                    <span class="component-use-tag">Header Block 06</span>
+                <div class="card-banner-wrapper">
+                    <img src="module_6.png" alt="Module 6 Graphic Banner" class="card-banner-img">
                 </div>
-                <h3 class="module-title-text">Troubleshooting (Primary Skill Module)</h3>
-                <p class="module-desc-text">
-                    Anchors the core systematic diagnostic methodology (Identify → Isolate → Test → Resolve), training assistants to trace physical signal flow paths and verify hardware states calmly under pressure.
-                </p>
+                <div class="card-body-content">
+                    <div class="card-header-line">
+                        <span class="module-id-label">Module 6</span>
+                        <span class="file-name-tag">module_6.png</span>
+                    </div>
+                    <h3 class="module-title-text">Troubleshooting (Primary Skill Module)</h3>
+                    <p class="module-desc-text">
+                        Anchors the core systematic diagnostic methodology (Identify → Isolate → Test → Resolve), training assistants to trace physical signal flow paths and verify hardware states calmly under pressure.
+                    </p>
+                </div>
             </div>
 
-            <!-- Module 7 -->
             <div class="mapping-card">
-                <div class="card-header-line">
-                    <span class="module-id-label">Module 7 Deployment</span>
-                    <span class="component-use-tag">Header Block 07</span>
+                <div class="card-banner-wrapper">
+                    <img src="module_7.png" alt="Module 7 Graphic Banner" class="card-banner-img">
                 </div>
-                <h3 class="module-title-text">Installation Best Practices</h3>
-                <p class="module-desc-text">
-                    Frames physical staging parameters, infrastructure layout blueprints, equipment rack build density, thermal airflow considerations, and safety-verified hardware display mounting configurations.
-                </p>
+                <div class="card-body-content">
+                    <div class="card-header-line">
+                        <span class="module-id-label">Module 7</span>
+                        <span class="file-name-tag">module_7.png</span>
+                    </div>
+                    <h3 class="module-title-text">Installation Best Practices</h3>
+                    <p class="module-desc-text">
+                        Frames physical staging parameters, infrastructure layout blueprints, equipment rack build density, thermal airflow considerations, and safety-verified hardware display mounting configurations.
+                    </p>
+                </div>
             </div>
 
-            <!-- Module 8 -->
             <div class="mapping-card">
-                <div class="card-header-line">
-                    <span class="module-id-label">Module 8 Deployment</span>
-                    <span class="component-use-tag">Header Block 08</span>
+                <div class="card-banner-wrapper">
+                    <img src="module_8.png" alt="Module 8 Graphic Banner" class="card-banner-img">
                 </div>
-                <h3 class="module-title-text">Ongoing Professional Development</h3>
-                <p class="module-desc-text">
-                    Marks the advanced credential planning phase, framing progressive mapping strategies toward expanding professional industry benchmarks and preparing for independent technical certifications.
-                </p>
+                <div class="card-body-content">
+                    <div class="card-header-line">
+                        <span class="module-id-label">Module 8</span>
+                        <span class="file-name-tag">module_8.png</span>
+                    </div>
+                    <h3 class="module-title-text">Ongoing Professional Development</h3>
+                    <p class="module-desc-text">
+                        Marks the advanced credential planning phase, framing progressive mapping strategies toward expanding professional industry benchmarks and preparing for independent technical certifications.
+                    </p>
+                </div>
             </div>
 
         </div>
