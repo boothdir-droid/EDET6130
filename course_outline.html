@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AV Student Assistant Training Program — Course Outline</title>
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #2D3748;
+            background-color: #F0F4F8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1A365D 0%, #2A4365 100%);
+            color: #FFFFFF;
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(26, 54, 93, 0.15);
+            margin-bottom: 40px;
+            border-bottom: 5px solid #D69E2E;
+        }
+
+        .course-tag {
+            background-color: #D69E2E;
+            color: #1A365D;
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        header h1 {
+            margin: 0 0 10px 0;
+            font-size: 2.2rem;
+            letter-spacing: -0.5px;
+        }
+
+        .header-meta {
+            margin: 0;
+            font-size: 1.1rem;
+            color: #E2E8F0;
+            opacity: 0.95;
+        }
+
+        /* Overview Summary Box */
+        .program-overview {
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .program-overview h2 {
+            margin-top: 0;
+            color: #1A365D;
+            font-size: 1.4rem;
+            border-bottom: 2px solid #EDF2F7;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+
+        .program-overview p {
+            margin: 0;
+            color: #4A5568;
+            font-size: 1.05rem;
+            text-align: justify;
+        }
+
+        /* Outline Modules Layout Stack */
+        .outline-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+        }
+
+        .module-card {
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            overflow: hidden;
+            border-top: 6px solid #1A365D;
+        }
+
+        /* Core Skill Troubleshooting Highlight */
+        .module-card.primary-skill-card {
+            border-top-color: #E53E3E;
+        }
+
+        .module-header {
+            background-color: #F8FAFC;
+            padding: 25px 30px;
+            border-bottom: 1px solid #E2E8F0;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .module-badge {
+            align-self: flex-start;
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 3px 10px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background-color: #EBF8FF;
+            color: #2B6CB0;
+        }
+
+        .primary-skill-card .module-badge {
+            background-color: #FFF5F5;
+            color: #E53E3E;
+        }
+
+        .module-title {
+            margin: 0;
+            font-size: 1.4rem;
+            color: #2D3748;
+        }
+
+        .module-goal {
+            margin: 4px 0 0 0;
+            font-size: 1rem;
+            color: #4A5568;
+            font-style: italic;
+        }
+
+        .module-body {
+            padding: 30px;
+        }
+
+        .section-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #718096;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #EDF2F7;
+            padding-bottom: 4px;
+        }
+
+        /* Content List Hierarchy */
+        .topic-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .topic-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .topic-group {
+            background-color: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .group-heading {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #2C5282;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .primary-skill-card .group-heading {
+            color: #9B2C2C;
+        }
+
+        .sublist {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .sublist li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+            color: #4A5568;
+        }
+
+        .sublist li::before {
+            content: "•";
+            color: #3182CE;
+            font-weight: bold;
+            position: absolute;
+            left: 4px;
+            top: 0;
+        }
+
+        .primary-skill-card .sublist li::before {
+            color: #E53E3E;
+        }
+
+        footer {
+            margin-top: 60px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #718096;
+            border-top: 1px solid #E2E8F0;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <span class="course-tag">AV Operations Department</span>
+            <h1>AV Student Assistant Training Program</h1>
+            <p class="header-meta">Comprehensive Master Course Syllabus & Operational Curriculum Outline</p>
+        </header>
+
+        <div class="program-overview">
+            <h2>Curriculum Architecture</h2>
+            <p>
+                This syllabus forms the programmatic operational roadmap for initializing student assistants within the AV Operations Department. Moving sequentially from basic human resources onboarding boundaries up through engineering concepts, physical hardware wiring mechanics, and complex system troubleshooting topologies, the outline establishes a verifiable competency standard for maintaining campus technological learning spaces.
+            </p>
+        </div>
+
+        <div class="outline-stack">
+            
+            <div class="module-card">
+                <div class="module-header">
+                    <span class="module-badge">Module 1</span>
+                    <h3 class="module-title">Introduction to the AV Student Assistant Position</h3>
+                    <p class="module-goal"><strong>Goal:</strong> Understand your role, responsibilities, and required training.</p>
+                </div>
+                <div class="module-body">
+                    <h4 class="section-title">Curriculum Topics</h4>
+                    <div class="topic-grid">
+                        <div class="topic-group">
+                            <h5 class="group-heading">Overview of the Department of AV Operations</h5>
+                            <ul class="sublist">
+                                <li>Structure of Department & Key Personnel</li>
+                                <li>Relationship to Other Departments</li>
+                                <li>Core Departmental Responsibilities</li>
+                                <li>Technology Enhanced Classroom (TEC) Support</li>
+                                <li>AV Event Support, Setup and Breakdown</li>
+                                <li>AV Equipment Maintenance, Design, & Installation</li>
+                            </ul>
+                        </div>
+                        <div class="topic-group">
+                            <h5 class="group-heading">Expectations & Required Portals</h5>
+                            <ul class="sublist">
+                                <li>Typical Student Responsibilities & "Day In The Life"</li>
+                                <li>Common Tasks & Cross-Departmental Assistance</li>
+                                <li>Required Training Accounts: Extron Electronics, AVIXA</li>
+                                <li>LinkedIn Learning, Legrand AV, AtlasIED Academy, Coursera</li>
+                                <li>Professional Expectations: Communication, Reliability, & Accountability</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module-card">
+                <div class="module-header">
+                    <span class="module-badge">Module 2</span>
+                    <h3 class="module-title">Administrative Procedures and Expectations</h3>
+                    <p class="module-goal"><strong>Goal:</strong> Understand work requirements, limitations, and communication methods.</p>
+                </div>
+                <div class="module-body">
+                    <h4 class="section-title">Curriculum Topics</h4>
+                    <div class="topic-grid">
+                        <div class="topic-group">
+                            <h5 class="group-heading">Scheduling & Timekeeping</h5>
+                            <ul class="sublist">
+                                <li>When You Can Work & HR Requirements</li>
+                                <li>Hours and Schedules / Communicating Absences</li>
+                                <li>Academic Priority: Focus remains on your education</li>
+                                <li>Timecard System mechanics and student responsibility</li>
+                                <li>Ramifications of timekeeping delays or tracking faults</li>
+                            </ul>
+                        </div>
+                        <div class="topic-group">
+                            <h5 class="group-heading">Operational Procedures</h5>
+                            <ul class="sublist">
+                                <li>Start-of-shift expectations & End-of-shift responsibilities</li>
+                                <li>Operational Communication Standards: Microsoft Teams</li>
+                                <li>Chromebook deployment guidelines</li>
+                                <li>Escalation Protocol: The strict 15-minute rule</li>
+                                <li>What operational parameters to capture and who to escalate to</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module-card">
+                <div class="module-header">
+                    <span class="module-badge">Module 3</span>
+                    <h3 class="module-title">AV Fundamentals & IT Integration</h3>
+                    <p class="module-goal"><strong>Goal:</strong> Build foundational understanding of AV terminology and crossover with IT Helpdesk and Networking Operations.</p>
+                </div>
+                <div class="module-body">
+                    <h4 class="section-title">Curriculum Topics</h4>
+                    <div class="topic-grid">
+                        <div class="topic-group">
+                            <h5 class="group-heading">Core Engineering Concepts</h5>
+                            <ul class="sublist">
+                                <li>What Is an AV System? Component overview and macro function</li>
+                                <li>Signal Fundamentals: Analog versus digital properties</li>
+                                <li>Resolution, scanning formats, and signal levels</li>
+                                <li>Inputs versus Outputs operational directional logic</li>
+                                <li>Signal Processing parameters & Compatibility issues</li>
+                            </ul>
+                        </div>
+                        <div class="topic-group">
+                            <h5 class="group-heading">AV + IT Convergence Mesh</h5>
+                            <ul class="sublist">
+                                <li>Network-based AV streaming versus physical hardware extension</li>
+                                <li>USB integration pathways, variations, and limitations</li>
+                                <li>Network Control layers and localized computer issues</li>
+                                <li>Key Technologies: EDID (Display communication handshakes)</li>
+                                <li>HDCP parameters (Content protection protocol management)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module-card">
+                <div class="module-header">
+                    <span class="module-badge">Module 4</span>
+                    <h3 class="module-title">Cables & Connector Lab</h3>
+                    <p class="module-goal"><strong>Goal:</strong> Identify connectors and cable types and understand their role in a system.</p>
+                </div>
+                <div class="module-body">
+                    <h4 class="section-title">Curriculum Topics</h4>
+                    <div class="topic-grid">
+                        <div class="topic-group">
+                            <h5 class="group-heading">Connector Anatomy & Signaling</h5>
+                            <ul class="sublist">
+                                <li>Connector Formats: HDMI, VGA, XLR, RCA, Speakon, USB</li>
+                                <li>Interface attributes: Connector Gender and functionality</li>
+                                <li>Audio Engineering: Balanced versus Unbalanced Audio lines</li>
+                                <li>Digital vs. Analog signal transport frameworks</li>
+                                <li>Signal Types: Audio vs. Video vs. Control vs. Ethernet</li>
+                            </ul>
+                        </div>
+                        <div class="topic-group">
+                            <h5 class="group-heading">Laboratory Analysis</h5>
+                            <ul class="sublist">
+                                <li>Common Failure Points: Loose connections and broken cables</li>
+                                <li>Incorrectly connected lines / routing errors</li>
+                                <li>Signal Degradation factors driven by structural cable length</li>
+                                <li>Connector Identification Lab: Visual Recognition and Use-Case matching</li>
+                                <li>Physical diagnostic troubleshooting exercises</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module-card">
+                <div class="module-header">
+                    <span class="module-badge">Module 5</span>
+                    <h3 class="module-title">Typical AV System (Anatomy of a TEC)</h3>
+                    <p class="module-goal"><strong>Goal:</strong> Understand how real classroom systems are constructed.</p>
+                </div>
+                <div class="module-body">
+                    <h4 class="section-title">Curriculum Topics</h4>
+                    <div class="topic-grid">
+                        <div class="topic-group">
+                            <h5 class="group-heading">System Architecture & Hardware</h5>
+                            <ul class="sublist">
+                                <li>Signal Path Journey: Source → Transport → Processing → Output + Control</li>
+                                <li>Typical Source Devices: Laptops, PCs, Document Cameras (HDMI, USB-C)</li>
+                                <li>Switching & Transport hardware: Extron IN1606 / IN1808 systems</li>
+                                <li>DTP Transmission engineering and typical signal routing matrix</li>
+                                <li>Audio Components: Mixers, Digital Signal Processors (DSPs), and Amplifiers</li>
+                                <li>Acoustic Output: Speaker system typologies and wiring layouts</li>
+                            </ul>
+                        </div>
+                        <div class="topic-group">
+                            <h5 class="group-heading">Output, Control, & Design</h5>
+                            <ul class="sublist">
+                                <li>Output Hardware: Displays vs. Projectors, Screen relay systems, Local monitors</li>
+                                <li>Real Classroom System Walkthrough: User guides and video references</li>
+                                <li>Control layer mechanics: Relay screens, Network Button Panels (NBPs), Touchscreens</li>
+                                <li>The structural role of the localized Control Processor engine</li>
+                                <li>System Design Principles: Standardization, Reliability, and Maintainability</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module-card primary-skill-card">
+                <div class="module-header">
+                    <span class="module-badge">Module 6 (Primary Skill Module)</span>
+                    <h3 class="module-title">Troubleshooting</h3>
+                    <p class="module-goal"><strong>Goal:</strong> Develop structured troubleshooting ability.</p>
+                </div>
+                <div class="module-body">
+                    <h4 class="section-title">Curriculum Topics</h4>
+                    <div class="topic-grid">
+                        <div class="topic-group">
+                            <h5 class="group-heading">Methodology & Triage Sequences</h5>
+                            <ul class="sublist">
+                                <li>Troubleshooting Script Lifecycle: Identify → Isolate → Test → Resolve</li>
+                                <li>Step-by-Step Checking: Cables, Power continuity, Inputs/Outputs, Device state</li>
+                                <li>Common Issue Patterns: No video, No audio, Intermittent signals, Sync errors</li>
+                                <li>Tracing physical signal pathways sequentially across devices</li>
+                                <li>Real Classroom Scenarios: Projector not displaying, Audio present with no video</li>
+                            </ul>
+                        </div>
+                        <div class="topic-group">
+                            <h5 class="group-heading">Diagnostic Mindset Rules</h5>
+                            <ul class="sublist">
+                                <li>Bypassing hard architecture blockages: Screen not lowering</li>
+                                <li>Advanced Troubleshooting: HDCP green images, EDID mismatch, USB-C variables</li>
+                                <li>Diagnostic Mindset Guidelines: Banish guessing from physical diagnostic fields</li>
+                                <li>Follow the signal path and verify assumptions with systematic physical tests</li>
+                                <li>Tracking documentation logs while testing to map remediation attempts</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module-card">
+                <div class="module-header">
+                    <span class="module-badge">Module 7</span>
+                    <h3 class="module-title">Installation Best Practices</h3>
+                    <p class="module-goal"><strong>Goal:</strong> Understand the AV infrastructure needed and how a room is built. Follow best practices for safety and efficiency.</p>
+                </div>
+                <div class="module-body">
+                    <h4 class="section-title">Curriculum Topics</h4>
+                    <div class="topic-grid">
+                        <div class="topic-group">
+                            <h5 class="group-heading">Physical Fabrication</h5>
+                            <ul class="sublist">
+                                <li>Installation Principles: Engineering planning, layout rules, clean system design</li>
+                                <li>Rack Building standards: Component organization, internal thermal airflow, and cooling</li>
+                                <li>Mounting & Hardware mechanics: Display brackets, projectors, and safety weight boundaries</li>
+                            </ul>
+                        </div>
+                        <div class="topic-group">
+                            <h5 class="group-heading">Staging Standards</h5>
+                            <ul class="sublist">
+                                <li>Cable Management layout rules: Labeling standards and routing techniques</li>
+                                <li>Audio System Installation: Speaker placement and physical wiring practices</li>
+                                <li>Common Installation Faults: Polarity errors, connector pinouts, cross-connected lines, network config</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module-card">
+                <div class="module-header">
+                    <span class="module-badge">Module 8</span>
+                    <h3 class="module-title">Ongoing Professional Development</h3>
+                    <p class="module-goal"><strong>Goal:</strong> Encourage students to continue AV training to expand on their knowledge and abilities. Guide them towards additional certification opportunities.</p>
+                </div>
+                <div class="module-body">
+                    <h4 class="section-title">Curriculum Topics</h4>
+                    <div class="topic-grid">
+                        <div class="topic-group">
+                            <h5 class="group-heading">Growth & Industry Metrics</h5>
+                            <ul class="sublist">
+                                <li>Skill Development Strategy: Hands-on practice and shadowing senior operators</li>
+                                <li>External Learning Resources: Extron AV Associate certification criteria</li>
+                                <li>AVIXA educational courses, Audinate Dante network validation tiers</li>
+                                <li>Departmental assigned continuous training milestones</li>
+                            </ul>
+                        </div>
+                        <div class="topic-group">
+                            <h5 class="group-heading">Advanced Skill Tracks</h5>
+                            <ul class="sublist">
+                                <li>Potential Career Pathways: AV Systems Technician, Help Desk Associate, Project Management</li>
+                                <li>System Design thinking, behavioral learning theories, and higher education pedagogy</li>
+                                <li>Advanced networking architecture and automated control system programming</li>
+                                <li>Continuous Improvement framework: Institutional learning loops derived from system failures</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <footer>
+            <p>AV Operations Department — Educational Systems Master Outline</p>
+            <p style="font-size: 0.75rem; margin-top: 5px;">Internal Structural Curriculum Matrix • Project Presentation Framework Only</p>
+        </footer>
+    </div>
+
+</body>
+</html>

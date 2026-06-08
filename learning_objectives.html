@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AV Student Assistant Training — Learning Objectives</title>
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #2D3748;
+            background-color: #F0F4F8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1A365D 0%, #2A4365 100%);
+            color: #FFFFFF;
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(26, 54, 93, 0.15);
+            margin-bottom: 40px;
+            border-bottom: 5px solid #D69E2E;
+        }
+
+        .course-tag {
+            background-color: #D69E2E;
+            color: #1A365D;
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        header h1 {
+            margin: 0 0 10px 0;
+            font-size: 2.2rem;
+            letter-spacing: -0.5px;
+        }
+
+        .header-meta {
+            margin: 0;
+            font-size: 1.1rem;
+            color: #E2E8F0;
+            opacity: 0.95;
+        }
+
+        /* Overview Summary Box */
+        .framework-overview {
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .framework-overview h2 {
+            margin-top: 0;
+            color: #1A365D;
+            font-size: 1.4rem;
+            border-bottom: 2px solid #EDF2F7;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+
+        .framework-overview p {
+            margin: 0;
+            color: #4A5568;
+            font-size: 1.05rem;
+            text-align: justify;
+        }
+
+        /* Objectives Grid System */
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        @media (min-width: 768px) {
+            .objectives-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .objective-card {
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border-top: 5px solid #1A365D;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .objective-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.05);
+        }
+
+        /* Core Skill Highlighting for Module 6 */
+        .objective-card.primary-skill-card {
+            border-top-color: #E53E3E;
+        }
+
+        .card-header {
+            background-color: #F8FAFC;
+            padding: 20px 25px;
+            border-bottom: 1px solid #EDF2F7;
+        }
+
+        .module-label {
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: #2B6CB0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .primary-skill-card .module-label {
+            color: #E53E3E;
+        }
+
+        .module-title {
+            margin: 0;
+            font-size: 1.2rem;
+            color: #2D3748;
+            line-height: 1.4;
+        }
+
+        .card-body {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        /* Outcomes Bullet Styling */
+        .objectives-list {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .objectives-list li {
+            position: relative;
+            padding-left: 26px;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            color: #4A5568;
+            text-align: justify;
+        }
+
+        .objectives-list li::before {
+            content: "✓";
+            color: #38A169;
+            font-weight: bold;
+            position: absolute;
+            left: 4px;
+            top: 0;
+        }
+
+        .primary-skill-card .objectives-list li::before {
+            color: #E53E3E;
+            content: "➜";
+        }
+
+        footer {
+            margin-top: 60px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #718096;
+            border-top: 1px solid #E2E8F0;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <span class="course-tag">AV Operations Department</span>
+            <h1>AV Student Assistant Training Program</h1>
+            <p class="header-meta">Course Learning Objectives — Behavioral & Technical Competency Framework</p>
+        </header>
+
+        <div class="framework-overview">
+            <h2>Instructional Outcomes Framework</h2>
+            <p>
+                This document defines the core behavioral learning objectives that student assistants must verify to achieve micro-credentials within the training program. Each objective is explicitly structured around measurable performance metrics, detailing the exact technical criteria required to satisfy field service, deployment maintenance, and critical troubleshooting tasks across our educational environments.
+            </p>
+        </div>
+
+        <div class="objectives-grid">
+            
+            <div class="objective-card">
+                <div class="card-header">
+                    <span class="module-label">Module 1</span>
+                    <h3 class="module-title">Introduction to the AV Student Assistant Position</h3>
+                </div>
+                <div class="card-body">
+                    <ul class="objectives-list">
+                        <li><strong>Identify Department Hierarchy:</strong> Map the internal structure and key personnel of the AV Operations Department and locate cross-departmental integration dependencies.</li>
+                        <li><strong>Configure External Training Portals:</strong> Authenticate, navigate, and log progress across mandatory educational training accounts including Extron, AVIXA, and Legrand AV.</li>
+                        <li><strong>Differentiate Core Service Domains:</strong> Explain operational boundaries dividing Technology Enhanced Classroom (TEC) support from live AV event setup lines.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="objective-card">
+                <div class="card-header">
+                    <span class="module-label">Module 2</span>
+                    <h3 class="module-title">Administrative Procedures and Expectations</h3>
+                </div>
+                <div class="card-body">
+                    <ul class="objectives-list">
+                        <li><strong>Execute Shift Protocols:</strong> Demonstrate rigorous start-of-shift preparation checklist rules and end-of-shift standard operational closeouts.</li>
+                        <li><strong>Apply Escalation Deadlines:</strong> Implement the strict 15-minute escalation rule via Microsoft Teams, correctly compiling all required critical room and symptom metadata.</li>
+                        <li><strong>Manage Timecard Compliance:</strong> Navigate the institutional timecard system to accurately record, track, and submit student service credit log shifts.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="objective-card">
+                <div class="card-header">
+                    <span class="module-label">Module 3</span>
+                    <h3 class="module-title">AV Fundamentals & IT Integration</h3>
+                </div>
+                <div class="card-body">
+                    <ul class="objectives-list">
+                        <li><strong>Analyze Signal Properties:</strong> Articulate foundational behavioral differences between analog and digital signals, processing resolution factors, and scanning types.</li>
+                        <li><strong>Diagnose Handshake Boundaries:</strong> Interrogate display interface variables to isolate performance conflicts caused by EDID mismatch or active HDCP content restrictions.</li>
+                        <li><strong>Differentiate Transport Vectors:</strong> Define core system constraints distinguishing network-based AV streaming protocols from raw physical copper line extension.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="objective-card">
+                <div class="card-header">
+                    <span class="module-label">Module 4</span>
+                    <h3 class="module-title">Cables & Connector Lab</h3>
+                </div>
+                <div class="card-body">
+                    <ul class="objectives-list">
+                        <li><strong>Identify Physical Formats:</strong> Visually recognize, label, and differentiate connector types including HDMI, USB-C, XLR, VGA, Speakon, and RCA.</li>
+                        <li><strong>Isolate Audio Signatures:</strong> Differentiate physical pinouts, electrical behavior, and noise immunity properties distinguishing balanced audio lines from unbalanced audio lines.</li>
+                        <li><strong>Detect Line Degradation:</strong> Calculate expected signal transmission drop-off limits based on mechanical cable wear, loose interface shells, and strict run-length restrictions.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="objective-card">
+                <div class="card-header">
+                    <span class="module-label">Module 5</span>
+                    <h3 class="module-title">Typical AV System (Anatomy of a TEC)</h3>
+                </div>
+                <div class="card-body">
+                    <ul class="objectives-list">
+                        <li><strong>Trace Architecture Flows:</strong> Trace the complete active signal path within a standardized lecture hall, moving from Source through Transport, Processing, and Output stages.</li>
+                        <li><strong>Configure Control Engines:</strong> Explain the structural relationship between localized control processors, Network Button Panels (NBPs), relay screens, and graphical touch interfaces.</li>
+                        <li><strong>Map Audio Hardware Matrices:</strong> Match classroom input devices (microphones, PCs) straight into corresponding mixer, DSP, and amplifier output routing lines.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="objective-card primary-skill-card">
+                <div class="card-header">
+                    <span class="module-label">Module 6 (Primary Skill Module)</span>
+                    <h3 class="module-title">Troubleshooting</h3>
+                </div>
+                <div class="card-body">
+                    <ul class="objectives-list">
+                        <li><strong>Apply Systematic Diagnosis:</strong> Execute the formalized diagnostic triage cycle (Identify → Isolate → Test → Resolve) instead of unsystematic guessing.</li>
+                        <li><strong>Isolate Common Fault Patterns:</strong> Analyze colloquial system fault descriptions to rapidly locate and remedy hard lockouts, total video drop-outs, sync errors, and green screens.</li>
+                        <li><strong>Log Experimental Progress:</strong> Document live hardware adjustments methodically as you test to explain exactly what path iterations were attempted.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="objective-card">
+                <div class="card-header">
+                    <span class="module-label">Module 7</span>
+                    <h3 class="module-title">Installation Best Practices</h3>
+                </div>
+                <div class="card-body">
+                    <ul class="objectives-list">
+                        <li><strong>Engineer Equipment Racks:</strong> Apply clean system design constraints to arrange hardware layout organization, thermal cooling parameters, and cable routing.</li>
+                        <li><strong>Implement Labeling Standards:</strong> Deploy uniform departmental cable marking conventions and wire bundling patterns to secure lines cleanly.</li>
+                        <li><strong>Verify Structural Mounting:</strong> Execute safe display, projector, and loudspeaker mounting layouts following strict structural weight and building safety boundaries.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="objective-card">
+                <div class="card-header">
+                    <span class="module-label">Module 8</span>
+                    <h3 class="module-title">Ongoing Professional Development</h3>
+                </div>
+                <div class="card-body">
+                    <ul class="objectives-list">
+                        <li><strong>Map Professional Pathways:</strong> Correlate internal department skills with broader industry roles including AV Field Technician, Help Desk Associate, or Project Manager.</li>
+                        <li><strong>Trace Certification Metrics:</strong> Formulate personal preparation strategies to clear advanced industry validation tiers such as Extron AV Associate or Audinate Dante Network standards.</li>
+                        <li><strong>Formulate Quality Feedback Loops:</strong> Analyze system failure reports and field errors to continually optimize local maintenance checklists.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <footer>
+            <p>AV Operations Department — Instructional Systems Design Portfolio</p>
+            <p style="font-size: 0.75rem; margin-top: 5px;">Internal Systems Objectives Registry • Project Presentation Artifact Only</p>
+        </footer>
+    </div>
+
+</body>
+</html>
